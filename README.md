@@ -6,7 +6,7 @@ The `VbaAutoCopy.txt` file provides a detailed explanation of the VBA code desig
 **What to do before running the code:**
 
 _File Naming:_
-   When saving the downloaded files into a pre-decided location, the the user needs to change the file name to a specific format. For example, for a client named "gc," the file is saved with a name like "gc13-01-2022" (representing today's date). after that all atepps are done by VBA execution.
+   When saving the downloaded files into a pre-decided location, the the user needs to change the file name to a specific format. For example, for a client named "gc," the file is saved with a name like "gc13-01-2022" (representing today's date). after that further steps are executed VBA.
 
 **Features of this code:**
 
