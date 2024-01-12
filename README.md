@@ -4,6 +4,7 @@ Description:
 The `VbaAutoCopy.txt` file provides a detailed explanation of the VBA code designed for Excel. This code automates the process of copying data from downloaded files (originating from Suzlon's CRMS) into an analysis workbook. The primary purpose is to analyze data related to clients' Wind Turbine Generators (WTGs).
 
 What to do before running the code:
+
 **File Naming:**
    When saving the downloaded files into a pre-decided location, the the user needs to change the file name to a specific format. For example, for a client named "gc," the file is saved with a name like "gc13-01-2022" (representing today's date). after that all atepps are done by VBA execution.
 Features of this code:
