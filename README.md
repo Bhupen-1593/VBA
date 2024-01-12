@@ -22,7 +22,6 @@ _File Naming:_
 5. **User Interaction via Message Boxes:**
    The code interacts with the user through strategically placed message boxes.
 
-Usage:
 - Refer to the `VbaAutoCopy.txt` file for the complete VBA code and a detailed explanation of each code line.
 
 Note: Make sure to adjust the file naming conventions and any client-specific details as needed in the VBA code.
