@@ -20,7 +20,7 @@ _File Naming:_
    Relevant information from the opened file is copied into the analysis workbook.
 
 5. **User Interaction via Message Boxes:**
-   The code interacts with the user through strategically placed message boxes to provide updates and gather necessary information.
+   The code interacts with the user through strategically placed message boxes.
 
 Usage:
 - Refer to the `VbaAutoCopy.txt` file for the complete VBA code and a detailed explanation of each code line.
