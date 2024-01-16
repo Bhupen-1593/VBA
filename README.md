@@ -24,4 +24,8 @@ _File Naming:_
 
 - Refer to the `VbaAutoCopy.txt` file for the complete VBA code and a detailed explanation of each code line.
 
-Note: Make sure to adjust the file naming conventions and any client-specific details as needed in the VBA code.
+Note: 
+
+This code will work as per the destination of folder where the files are downloaded, please edit the path and range as per personal needs
+
+Adjust the file naming conventions and any client-specific details as needed in the VBA code.
