@@ -1,5 +1,6 @@
 Option Explicit
-Private ch As Selenium.ChromeDriver                                'this line used ch driver only in the module in which it is declared
+Private ch As Selenium.ChromeDriver                     'this line used ch driver only in the module in which it is declared
+-------------------------------------------------------------------------------------------------------------------------------------------------------------
 Private Sub Workbook_Open()
 Dim result As VbMsgBoxResult
 result = MsgBox("Do you want to get the data from CRMS now?", vbYesNo)
@@ -10,6 +11,7 @@ If result = vbYes Then
 Else
 End If
 End Sub    'this code promps user to select the extraction of the data from the CRMS website and then calls otheer functions
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Private Sub Data_Verification()
 Dim ans1 As Variant
 Dim ans2 As Variant
@@ -24,6 +26,7 @@ Else
 ans2 = MsgBox("No. of rows of different WTGs are not equal excel will not proceed", vbOKOnly)
 End If
 End Sub     'this checks prior data by comparing no of rows which corresponds to date for each wind turbine, each wind turbine must have same no of data rows
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Private Sub Workbook_Open_Copy1()
 Dim wsdaily1 As Workbook
 Dim answer1 As Variant
@@ -61,7 +64,7 @@ End If
 err10041:
 MsgBox "Check if the file is downloaded or not!"
 End Sub                                             'this sub routine checks if the data file is downloaded or not then prompts the user action so that data from the file can be copied into the master data sheet
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Private Sub Workbook_Open_Copy2()
 Dim wsdaily2 As Workbook
 Dim answer2 As Variant
@@ -103,7 +106,7 @@ err10042:
     MsgBox "Check if file is downloaded or not!"
 
 End Sub                                                 'this sub routine checks if the data file is downloaded or not then prompts the user action so that data from the file can be copied into the master data sheet for other client
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Private Sub testselenium()
 Dim rng As Range
 Dim cr_rng As Range
@@ -137,7 +140,7 @@ ch.FindElementById("ContentPlaceHolder1_BtnViewRpt").Click
 ch.FindElementById("ContentPlaceHolder1_gvDailyGenData_lnkbtnFile_0").Click
 
 End Sub                                                                 'this sub routine uses selenium libarary to interact with the CRMS site and extract data
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Private Sub RenameTodayDownloadedFile()
     Dim objFSO As Object
     Dim objFolder As Object
@@ -166,7 +169,7 @@ Private Sub RenameTodayDownloadedFile()
         End If
     Next objFile
 End Sub                                                                ' this subroutine renames the latest downloaded data file for further processing
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Private Sub call_fns()
 
 On Error Resume Next
@@ -175,7 +178,7 @@ Application.Wait (Now + TimeValue("00:00:10"))
 Call RenameTodayDownloadedFile
 
 End Sub                                                             'sub routine calls are made in sequence first extraction then rename sub is called
-
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Sub MyPublicSub()
     Call Workbook_Open
 End Sub                                                       ' sub is made public so than the code can be assigned to a button on excel sheet
