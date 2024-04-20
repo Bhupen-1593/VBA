@@ -121,8 +121,8 @@ Dim dt As Selenium.WebElement
 ch.SetPreference "download.default_directory", Worksheets("Custom").Range("B2").Value
 ch.Start baseUrl:="https://crms.suzlon.com"
 ch.Get "/"
-ch.FindElementById("txtUserId").SendKeys "savla"
-ch.FindElementById("txtPassword").SendKeys "Savla@123"
+ch.FindElementById("txtUserId").SendKeys "*****"
+ch.FindElementById("txtPassword").SendKeys "*********"     'REDACTED FOR PRIVACY PURPOSE
 ch.FindElementById("img_login").Click
 ch.Get "https://crms.suzlon.com/aspx/Rpt_Daily_Power_Gen.aspx"
 Set ddl = ch.FindElementByName("ctl00$ContentPlaceHolder1$DDLCustomer").AsSelect
