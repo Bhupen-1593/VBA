@@ -65,47 +65,44 @@ err10041:
 MsgBox "Check if the file is downloaded or not!"
 End Sub                                             'this sub routine checks if the data file is downloaded or not then prompts the user action so that data from the file can be copied into the master data sheet
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-Private Sub Workbook_Open_Copy2()
-Dim wsdaily2 As Workbook
-Dim answer2 As Variant
-Dim cus2 As String
-On Error GoTo err10042
+Private Sub testselenium()
+Dim rng As Range
+Dim cr_rng As Range
+Dim in_date As Date
+Set ch = New Selenium.ChromeDriver
+Dim Customer As Object
+Dim Site As Object
+Dim loc As Object
+ch.SetPreference "download.default_directory", Worksheets("Custom").Range("B3").Value
+ch.Start baseUrl:="https://crms.suzlon.com"
+ch.Get "/"
+Application.Wait (Now + TimeValue("00:00:05"))
+ch.FindElementById(":r0:").SendKeys "geecvent"
+ch.FindElementById(":r1:").SendKeys "Geecee@100"
+ch.FindElementById(":r2:").Click
+Application.Wait (Now + TimeValue("00:00:05"))
+ch.Get "https://crms.suzlon.com/#/generation-report"
 
-answer2 = MsgBox("Open and copy Savla Generation as on" & VBA.Format(VBA.Date - 1, "dd-mm-yy"), vbYesNo)
-If answer2 = vbYes Then
+Set Customer = ch.FindElementByXPath("//button[@class='MuiButtonBase-root MuiIconButton-root MuiIconButton-sizeMedium MuiAutocomplete-popupIndicator css-151t2em']")
+Customer.Click
+ch.FindElementByXPath("//li[contains(text(),'GeeCee Ventures Limited')]").Click
 
-cus2 = Replace(Workbooks("WTG Analysis - Copy").Worksheets("Custom").Range("B2").Value & "savt" & VBA.Format(VBA.Date - 1, "dd-mm-yy"), "\", "/")
+Set Site = ch.FindElementByXPath("//div[@name='site']")
+Site.Click
+ch.FindElementByXPath("//li[contains(text(),'All Sites')]").Click
 
-Set wsdaily2 = Workbooks.Open(cus)
+Set loc = ch.FindElementByXPath("//div[@name='WTGLocation']")
+loc.Click
+ch.FindElementByXPath("//li[contains(text(),'All Location')]").Click
 
-
-If Range("A2").Value <> "" And Range("A3").Value <> "" Then
-    wsdaily2.Sheets(1).Range("A2", Range("A2").End(xlToRight).End(xlDown)).Copy
-    ThisWorkbook.Sheets(1).Activate
-    Range("A2").End(xlDown).Offset(1, 0).PasteSpecial
-Else
-    wsdaily2.Sheets(1).Range("A2", Range("A2").End(xlToRight)).Copy
-    ThisWorkbook.Sheets(1).Activate
-    Range("A2").End(xlDown).Offset(1, 0).PasteSpecial
-End If
-
-wsdaily2.Sheets(2).Activate
-If Range("A2").Value <> "" And Range("A3").Value <> "" Then
-    wsdaily2.Sheets(2).Range("A2", Range("A2").End(xlToRight).End(xlDown)).Copy
-    ThisWorkbook.Sheets(2).Activate
-    Range("A2").End(xlDown).Offset(1, 0).PasteSpecial
-Else
-    wsdaily2.Sheets(2).Range("A2", Range("A2").End(xlToRight)).Copy
-    ThisWorkbook.Sheets(2).Activate
-    Range("A2").End(xlDown).Offset(1, 0).PasteSpecial
-End If
-
-End If
-
-err10042:
-    MsgBox "Check if file is downloaded or not!"
-
-End Sub                                                 'this sub routine checks if the data file is downloaded or not then prompts the user action so that data from the file can be copied into the master data sheet for other client
+in_date = Application.WorksheetFunction. _
+VLookup("AK070", Worksheets("LatestDate").Range("C3", Worksheets("LatestDate").Range("D3").End(xlDown)), 2)
+ch.FindElementById(":rc:").SendKeys DateAdd("d", 1, in_date)
+ch.FindElementById(":rd:").SendKeys VBA.Format(Date - 1, "dd/mm/yyyy")
+ch.FindElementByXPath("//button[@tabindex='-1']").Click
+ch.FindElementByXPath("//button[@type='submit']").Click
+ch.FindElementByXPath("//button[text()='Download Excel']").Click
+End Sub                                                                                  'this sub routine checks if the data file is downloaded or not then prompts the user action so that data from the file can be copied into the master data sheet for other client
 ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Private Sub testselenium()
 Dim rng As Range
